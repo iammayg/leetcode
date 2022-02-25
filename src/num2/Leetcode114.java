@@ -5,13 +5,24 @@ public class Leetcode114 {
         dfs(root);
     }
 
-    static void dfs(TreeNode root) {
-        if (root==null){
-            return;
+    static TreeNode dfs(TreeNode root) {
+        if (root.left == null && root.right == null) {
+            return root;
         }
-        if (root.left!=null){
-            
+        if (root.right != null) {
+            dfs(root.right);
         }
+        if (root.left != null) {
+            TreeNode toAdd = dfs(root.left);
+            TreeNode temp = toAdd;
+            while (temp.right != null) {
+                temp = temp.right;
+            }
+            temp.right = root.right;
+            root.right = toAdd;
+            root.left=null;
+        }
+        return root;
     }
 
     public class TreeNode {
