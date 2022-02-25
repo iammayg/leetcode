@@ -7,7 +7,7 @@ package num2;
  * <p>
  * //这个题使用小根堆也是可以的但是相比于大根堆不是最优解。小根堆的思路是将所有元素入堆，然后弹出k次堆顶元素
  */
-public class Offer40 {
+public class Jz40 {
 
 
     /**

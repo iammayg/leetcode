@@ -15,11 +15,9 @@ public class Leetcode79 {
         st = new boolean[xl][yl];
         for (int i = 0; i < xl; i++) {
             for (int j = 0; j < yl; j++) {
-                if (board[i][j] == ww.charAt(0)) {
-                    boolean res = dfs(i, j, 0);
-                    if (res) {
-                        return true;
-                    }
+                boolean res = dfs(i, j, 0);
+                if (res) {
+                    return true;
                 }
             }
         }
@@ -27,38 +25,31 @@ public class Leetcode79 {
 
     }
 
-    static boolean dfs(int x, int y, int p) {
-        if (p == board.length-1) {
+    static boolean dfs(int x, int y, int p) {//lc79：代码写起来有一点点麻烦。dfs()函数里传入的是将要比较的值，然后通过p指针的位置来判断是否比较完成。
+        if (p == word.length()) {
             return true;
         }
 
-        if (x < 0 || y < 0 || x >= xl || y > yl) {
+        if (x < 0 || y < 0 || x >= xl || y >= yl) {
             return false;
         }
-        if (!st[x][y] && word.charAt(p) == board[x][y]) {
-            st[x][y] = true;
-            if (!st[x + 1][y]) {
-                if (dfs(x + 1, y, p + 1)) {
-                    return true;
-                }
-            }
-            if (!st[x - 1][y]) {
-                if (dfs(x - 1, y, p + 1)) {
-                    return true;
-                }
-            }
-            if (!st[x][y + 1]) {
-                if (dfs(x, y + 1, p + 1)) {
-                    return true;
-                }
-            }
-            if (!st[x][y - 1]) {
-                if (dfs(x, y - 1, p + 1)) {
-                    return true;
-                }
-            }
-            st[x][y] = false;
+        if (word.charAt(p) != board[x][y] || st[x][y]) {
+            return false;
         }
+        st[x][y] = true;
+        if (dfs(x + 1, y, p + 1)) {
+            return true;
+        }
+        if (dfs(x - 1, y, p + 1)) {
+            return true;
+        }
+        if (dfs(x, y + 1, p + 1)) {
+            return true;
+        }
+        if (dfs(x, y - 1, p + 1)) {
+            return true;
+        }
+        st[x][y] = false;
         return false;
     }
 
