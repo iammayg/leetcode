@@ -1,7 +1,44 @@
 package num2.paixu;
 
 
+import java.util.Scanner;
+
 public class Main {
+
+
+    static int[] temp = new int[10000];
+
+    static void guibing(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int mid = (l + r) >> 1;
+
+        guibing(arr, l, mid);
+        guibing(arr, mid + 1, r);
+
+        int k = 0;
+
+        int i = l;
+        int j = mid + 1;
+        while (i <= mid && j <= r) {
+            if (arr[i] < arr[j]) {
+                temp[k++] = arr[i++];
+            } else {
+                temp[k++] = arr[j++];
+            }
+        }
+        while (i <= mid) {
+            temp[k++] = arr[i++];
+        }
+        while (j <= r) {
+            temp[k++] = arr[j++];
+        }
+        for (i = l, j = 0; i <= r; i++, j++) {
+            arr[i] = temp[j];
+        }
+    }
+
 
     public static void quick_sort(int[] arr, int l, int r) {
         if (l >= r) {
@@ -51,16 +88,16 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        //                int[] arr = new int[] {3, 21, 2, 3, 5, 6, 7, 86, 5, 4, 1, 2, 45,};
-        int[] arr = new int[] {2, 3, 1};
-        //        maopao(arr);
-        //        charu(arr);
-        quick_sort(arr, 0, arr.length - 1);
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = in.nextInt();
+        }
+        guibing(arr, 0, n - 1);
         for (int i = 0; i < arr.length; i++) {
             System.out.print(arr[i] + " ");
         }
-
-
     }
 
     public static void swap(int[] arr, int p1, int p2) {
