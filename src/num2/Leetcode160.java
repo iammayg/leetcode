@@ -1,6 +1,6 @@
 package num2;
 
-public class Leetcode166 {
+public class Leetcode160 {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
         if (headA == null || headB == null) {
             return null;
