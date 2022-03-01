@@ -12,8 +12,8 @@ public class Leetcode287 {
             a = nums[nums[a]];
             b = nums[b];
         }
-        System.out.println(a);
-        b = nums[0];
+        //        System.out.println(a);
+        b = 0;
         while (a != b) {
             a = nums[a];
             b = nums[b];
@@ -22,7 +22,7 @@ public class Leetcode287 {
     }
 
     public static void main(String[] args) {
-        int[] arr = new int[]{1, 3, 4, 2, 2};
-//        findDuplicate(arr);
+        int[] arr = new int[] {1, 3, 4, 2, 2};
+        System.out.println(findDuplicate(arr));
     }
 }
