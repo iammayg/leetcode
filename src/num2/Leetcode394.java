@@ -5,7 +5,7 @@ package num2;
  * Created on 2022-03-04
  */
 public class Leetcode394 {
-    static int p;
+    static int p;//p定义成全局变量，因为下次递归后p需要维持更新后的值
 
 
     public static String decodeString(String s) {
@@ -15,7 +15,7 @@ public class Leetcode394 {
 
     static String dfs(String s) {
         String res = "";
-        while (p < s.length() && s.charAt(p) != ']') {
+        while (p < s.length() && s.charAt(p) != ']') {//如果是左括号当前递归结束
             if (s.charAt(p) == '[') {
                 p++;
             } else if (Character.isDigit(s.charAt(p))) {
@@ -27,7 +27,7 @@ public class Leetcode394 {
                 }
                 p = p + l;
                 String y = dfs(s);
-                p++;
+                p++;//递归完之后忽略掉右括号
                 while (x > 0) {
                     res += y;
                     x--;
