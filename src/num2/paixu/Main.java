@@ -8,6 +8,31 @@ public class Main {
 
     static int[] temp = new int[10000];
 
+
+    static void kuaipai(int[] arr, int l, int r) {
+        if (l >= r) {
+            return;
+        }
+        int ll = l - 1;
+        int rr = r + 1;
+        int k = arr[l];
+        while (l < r) {
+            do {
+                ll++;
+            } while (arr[ll] < k);
+            do {
+                rr--;
+            } while (arr[rr] > k);
+            if (ll < rr) {
+                swap(arr, ll, rr);
+            }
+        }
+        quick_sort(arr, l, rr);
+        quick_sort(arr, rr + 1, r);
+
+
+    }
+
     static void guibing(int[] arr, int l, int r) {
         if (l >= r) {
             return;

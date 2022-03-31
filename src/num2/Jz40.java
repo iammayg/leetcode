@@ -33,20 +33,6 @@ public class Jz40 {
             }
         }
 
-
-        //        if (kp <= r) {
-        //            if (rr > kp) {
-        //                quickSort(arr, k, l, rr);
-        //            } else {
-        //                quickSort(arr, k, l, rr);
-        //                quickSort(arr, k, rr + 1, kp);
-        //            }
-        //        } else {
-        //            quickSort(arr, k, l, rr);
-        //            quickSort(arr, k, rr + 1, r);
-        //        }
-
-
         int sl = rr - l + 1;
         if (rr == k) {
             return;
